@@ -4,8 +4,29 @@ namespace App\Models\MasterData;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Consultation extends Model
 {
-    use HasFactory;
+      // use HasFactory;
+      use SoftDeletes;
+
+      public $table = 'consultation';
+  
+      protected $dates = [
+          'created_ad',
+          'updated_at',
+          'deleted_at'
+      ];
+  
+      protected $fillable = [
+          'name',
+          'created_ad',
+          'updated_at',
+          'deleted_at'
+      ];
+
+      public function appointment()
+      {   //2 parameter(path,foreign key)
+          return $this->hasMany('App\Models\Operational\Appointment', 'consultation_id');
+      }
 }
