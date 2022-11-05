@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\DetailUser;
 
+use App\Models\ManagementAccess\DetailUser;
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class UpdateDetailUserRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateDetailUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,24 @@ class UpdateDetailUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => [
+                'required', 'integer',
+            ],
+            'type_user_id' => [
+                'required', 'integer',
+            ],
+            'contact' => [
+                'required','string', 'max:255',
+            ],
+            'address' => [
+                'required','string', 'max:255',
+            ],
+            'photo' => [
+                'nullable','string', 'max:10000',
+            ],
+            'gender' => [
+                'required','string', 'max:255',
+            ],
         ];
     }
 }
