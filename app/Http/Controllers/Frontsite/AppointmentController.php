@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Fronsite;
+namespace App\Http\Controllers\Frontsite;
 
 use App\Http\Controllers\Controller;
 //use library
@@ -14,19 +14,12 @@ use Auth;
 //use model
 use App\Models\User;
 use App\Models\Operational\Doctor;
-use App\Models\Operational\Transaction;
-use App\Models\Operational\Appointment;
 use App\Models\MasterData\Consultation;
-use App\Models\MasterData\ConfigPayment;
-use App\Models\MasterData\Specialist;
-
-
 
 //use third party
 
-class PaymentController extends Controller
+class AppointmentController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -38,7 +31,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('pages.frontsite.payment.index');
+        return view('pages.frontsite.appointment.index');
     }
 
     /**
